@@ -25,7 +25,7 @@ public class DAOArticle {
       int id = resultSet.getInt("id");
       String libelle = resultSet.getString("libelle");
       String description = resultSet.getString("description");
-      float prix = resultSet.getFloat("prix");
+      Double prix = resultSet.getDouble("prix");
       articles.add(new Article(id, libelle, description, prix));
     }
     return articles;
@@ -36,7 +36,7 @@ public class DAOArticle {
     PreparedStatement statement = connection.prepareStatement(sql);
     statement.setString(1, article.getLibelle());
     statement.setString(2, article.getDescription());
-    statement.setFloat(3, article.getPrix());
+    statement.setDouble(3, article.getPrix());
     statement.executeUpdate();
   }
   
@@ -45,7 +45,7 @@ public class DAOArticle {
     PreparedStatement statement = connection.prepareStatement(sql);
     statement.setString(1, article.getLibelle());
     statement.setString(2, article.getDescription());
-    statement.setFloat(3, article.getPrix());
+    statement.setDouble(3, article.getPrix());
     statement.setInt(4, article.getId());
     statement.executeUpdate();
   }

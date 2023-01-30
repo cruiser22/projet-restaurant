@@ -4,9 +4,9 @@ public class Article {
 	private int id;
     private String libelle;
     private String description;
-    private float prix;
+    private Double prix;
 
-    public Article(int id, String libelle, String description, float prix) {
+    public Article(int id, String libelle, String description, Double prix) {
         this.id = id;
         this.libelle = libelle;
         this.description = description;
@@ -37,11 +37,11 @@ public class Article {
         this.description = description;
     }
 
-    public float getPrix() {
+    public Double getPrix() {
         return prix;
     }
 
-    public void setPrix(float prix) {
+    public void setPrix(Double prix) {
         this.prix = prix;
     }
 }

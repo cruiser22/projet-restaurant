@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,16 +36,24 @@
 				<li><a
 					class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
 					href="carte.jsp">Notre carte</a></li>
+					<c:if test="${client == null}">
 				<li><a
 					class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
 					href="connexion.jsp">Connexion</a></li>
 				<li><a
 					class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
 					href="inscription.jsp">Inscription</a></li>
+					</c:if>
 				<c:if test="${client != null}">
 					<li><a
 						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+						href="choixArticles.jsp">Mon Menu</a></li>
+					<li><a
+						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
 						href="session?auth=profil">Mon profil</a></li>
+					<li><a
+						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+						href="session?auth=deconnexion">Deconnexion</a></li>
 				</c:if>
 			</ul>
 			</nav>
@@ -95,6 +104,12 @@
 			Enregistrer</button>
 		<input type="hidden" name="auth" value="editUser" />
 	</form>
+	</section>
+	<div class="w-full py-5 mt-8 flex items-center justify-center">
+		<h2 class="text-3xl font-semibold text-gray-800">Mes commandes</h2>
+	</div>
+	<section class="bg-white pb-4 px-6 container mx-auto">
+		<!-- foreach commandes -->	
 	</section>
 </body>
 </html>

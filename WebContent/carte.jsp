@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -43,32 +44,32 @@
           id="menu"
         >
           <nav>
-            <ul
-              class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0"
-            >
-              <li>
-                <a
-                  class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                  href="carte.jsp"
-                  >Notre carte</a
-                >
-              </li>
-              <li>
-                <a
-                  class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                  href="connexion.jsp"
-                  >Connexion</a
-                >
-              </li>
-              <li>
-                <a
-                  class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                  href="inscription.jsp"
-                  >Inscription</a
-                >
-              </li>
-            </ul>
-          </nav>
+			<ul
+				class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
+				<li><a
+					class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+					href="carte.jsp">Notre carte</a></li>
+					<c:if test="${client == null}">
+				<li><a
+					class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+					href="connexion.jsp">Connexion</a></li>
+				<li><a
+					class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+					href="inscription.jsp">Inscription</a></li>
+					</c:if>
+				<c:if test="${client != null}">
+					<li><a
+						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+						href="choixArticles.jsp">Mon Menu</a></li>
+					<li><a
+						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+						href="session?auth=profil">Mon profil</a></li>
+					<li><a
+						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+						href="session?auth=deconnexion">Deconnexion</a></li>
+				</c:if>
+			</ul>
+			</nav>
         </div>
 
         <div class="order-1">
@@ -86,202 +87,82 @@
       <h2 class="text-3xl font-semibold text-gray-800">Les entrées</h2>
     </div>
     <section class="bg-white pb-4">
-      <div
-        class="container mx-auto flex items-center justify-center flex-wrap pb-12"
-      >
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-      </div>
-    </section>
-    <div class="w-full py-5 mt-8 flex items-center justify-center">
-      <h2 class="text-3xl font-semibold text-gray-800">
-        Spécialitées américaines
-      </h2>
+	<div
+		class="container mx-auto flex items-center justify-center flex-wrap pb-12">
+		<c:forEach items="${entrees}" var="article">
+		<div class="w-full md:w-1/2 xl:w-1/4 p-6 flex flex-col">
+			<a href="#"> <img class="hover:grow hover:shadow-lg w-full h-48 object-cover"
+				src="image/${article.image}" />
+				<div class="pt-3 flex items-center justify-between">
+					<p class="">${article.nomArticle}</p>
+					<p class="text-gray-900">${article.prix}</p>
+				</div>
+				<p class="pt-1 text-gray-500 w-full truncate">${article.description}</p>
+			</a>
+		</div>
+		</c:forEach>
+		</div>
+		</section>
+		<div class="w-full py-5 mt-8 flex items-center justify-center">
+      <h2 class="text-3xl font-semibold text-gray-800">Specialites americaines</h2>
     </div>
-    <section class="bg-white pb-4">
-      <div
-        class="container mx-auto flex items-center justify-center flex-wrap pb-12"
-      >
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <div class="w-full py-5 mt-8 flex items-center justify-center">
-      <h2 class="text-3xl font-semibold text-gray-800">
-        Spécialitées méxicaines
-      </h2>
+		<section class="bg-white pb-4">
+	<div
+		class="container mx-auto flex items-center justify-center flex-wrap pb-12">
+		<c:forEach items="${americain}" var="article">
+		<div class="w-full md:w-1/2 xl:w-1/4 p-6 flex flex-col">
+			<a href="#"> <img class="hover:grow hover:shadow-lg w-full h-48 object-cover"
+				src="image/${article.image}" />
+				<div class="pt-3 flex items-center justify-between">
+					<p class="">${article.nomArticle}</p>
+					<p class="text-gray-900">${article.prix}</p>
+				</div>
+				<p class="pt-1 text-gray-500 w-full truncate">${article.description}</p>
+			</a>
+		</div>
+		</c:forEach>
+		</div>
+		</section>
+		<div class="w-full py-5 mt-8 flex items-center justify-center">
+      <h2 class="text-3xl font-semibold text-gray-800">Specialites mexicaines</h2>
     </div>
-    <section class="bg-white pb-4">
-      <div
-        class="container mx-auto flex items-center justify-center flex-wrap pb-12"
-      >
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <div class="w-full py-5 mt-8 flex items-center justify-center">
-      <h2 class="text-3xl font-semibold text-gray-800">
-        Les désserts 
-      </h2>
+		<section class="bg-white pb-4">
+	<div
+		class="container mx-auto flex items-center justify-center flex-wrap pb-12">
+		<c:forEach items="${mexicain}" var="article">
+		<div class="w-full md:w-1/2 xl:w-1/4 p-6 flex flex-col">
+			<a href="#"> <img class="hover:grow hover:shadow-lg w-full h-48 object-cover"
+				src="image/${article.image}" />
+				<div class="pt-3 flex items-center justify-between">
+					<p class="">${article.nomArticle}</p>
+					<p class="text-gray-900">${article.prix}</p>
+				</div>
+				<p class="pt-1 text-gray-500 w-full truncate">${article.description}</p>
+			</a>
+		</div>
+		</c:forEach>
+		</div>
+		</section>
+		<div class="w-full py-5 mt-8 flex items-center justify-center">
+      <h2 class="text-3xl font-semibold text-gray-800">Desserts</h2>
     </div>
-    <section class="bg-white pb-4">
-      <div
-        class="container mx-auto flex items-center justify-center flex-wrap pb-12"
-      >
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-          <a href="#">
-            <img
-              class="hover:grow hover:shadow-lg"
-              src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80"
-            />
-            <div class="pt-3 flex items-center justify-between">
-              <p class="">Product Name</p>
-              <p class="text-gray-900">£9.99</p>
-            </div>
-            <p class="pt-1 text-gray-500">Description</p>
-          </a>
-        </div>
-      </div>
-    </section>
+		<section class="bg-white pb-4">
+	<div
+		class="container mx-auto flex items-center justify-center flex-wrap pb-12">
+		<c:forEach items="${desserts}" var="article">
+		<div class="w-full md:w-1/2 xl:w-1/4 p-6 flex flex-col">
+			<a href="#"> <img class="hover:grow hover:shadow-lg w-full h-48 object-cover"
+				src="image/${article.image}" />
+				<div class="pt-3 flex items-center justify-between">
+					<p class="">${article.nomArticle}</p>
+					<p class="text-gray-900">${article.prix}</p>
+				</div>
+				<p class="pt-1 text-gray-500 w-full truncate">${article.description}</p>
+			</a>
+		</div>
+		</c:forEach>
+		</div>
+		</section>
   </body>
 
 </html>

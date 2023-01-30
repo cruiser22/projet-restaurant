@@ -18,33 +18,33 @@ public class DAOArticle {
 		String sql = "SELECT * FROM articles WHERE prix=" + prix;
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		ArrayList<Article> ala = new ArrayList<Article>();
 		while (rs.next())
-			ala.add(new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
-		ala.add(null);
+			ala.add(new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+					rs.getString(6)));
 		System.out.println("testSelectByPrix OK");
 		conn.close();
 		return ala;
 	}
-	
-	public ArrayList<Article> selectByMarque(String nom) throws ClassNotFoundException, SQLException {
+
+	public ArrayList<Article> selectByCategorie(int categorie) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
-		String sql = "SELECT * FROM articles WHERE libelle LIKE(\"%" + nom + "%\");";
+		String sql = "SELECT * FROM articles WHERE categorie =" + categorie;
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		ArrayList<Article> ala = new ArrayList<Article>();
 		while (rs.next())
-			ala.add(new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
-		ala.add(null);
+			ala.add(new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+					rs.getString(6)));
 		System.out.println("testSelectByMarque OK");
 		conn.close();
 		return ala;
 	}
-	
+
 	public Article selectByRef(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
@@ -52,15 +52,16 @@ public class DAOArticle {
 		String sql = "SELECT * FROM articles WHERE id=" + id;
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		Article pers = null;
 		while (rs.next())
-			pers = new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6));
+			pers = new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+					rs.getString(6));
 		System.out.println("testSelectById OK");
 		conn.close();
 		return pers;
 	}
-	
+
 	public ArrayList<Article> select() throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
@@ -68,16 +69,22 @@ public class DAOArticle {
 		String sql = "SELECT * FROM articles";
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		ArrayList<Article> ala = new ArrayList<Article>();
 		while (rs.next())
-			ala.add(new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
+			ala.add(new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+					rs.getString(6)));
 		System.out.println("testSelect OK");
 		conn.close();
 		return ala;
 	}
+<<<<<<< HEAD
 	
 	public static void insert(Article a) throws ClassNotFoundException, SQLException {
+=======
+
+	public void insert(Article a) throws ClassNotFoundException, SQLException {
+>>>>>>> ca659021c8f661d0f6dab8b333ce3f2cfb1fd5cc
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
@@ -93,10 +100,14 @@ public class DAOArticle {
 		System.out.println("testInsertion OK");
 		conn.close();
 	}
+<<<<<<< HEAD
 	
 	
 	
 	
+=======
+
+>>>>>>> ca659021c8f661d0f6dab8b333ce3f2cfb1fd5cc
 	public void update(Article a) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
@@ -113,7 +124,7 @@ public class DAOArticle {
 		System.out.println("testUpdate OK");
 		conn.close();
 	}
-	
+
 	public void delete(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
@@ -125,4 +136,3 @@ public class DAOArticle {
 		conn.close();
 	}
 }
-

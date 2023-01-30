@@ -39,8 +39,11 @@ public class Session extends HttpServlet {
 				request.getRequestDispatcher("WEB-INF/profil.jsp").forward(request, response);
 			else if (context.equals("editUser"))
 				request.getRequestDispatcher("editUser").forward(request, response);
-			else
-				request.getRequestDispatcher("WEB-INF/monMenu.jsp").forward(request, response);
+			else if (context.equals("deconnexion")) {
+				request.getSession().setAttribute("client", null);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			} else
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 	}
 

@@ -14,7 +14,7 @@ public class DAOArticle {
 	public ArrayList<Article> selectByPrix(double prix) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-db1", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
 		String sql = "SELECT * FROM article WHERE prix=" + prix;
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
@@ -31,7 +31,7 @@ public class DAOArticle {
 	public ArrayList<Article> selectByMarque(String nom) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-db1", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
 		String sql = "SELECT * FROM article WHERE libelle LIKE(\"%" + nom + "%\");";
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
@@ -48,7 +48,7 @@ public class DAOArticle {
 	public Article selectByRef(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-db1", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
 		String sql = "SELECT * FROM article WHERE id=" + id;
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
@@ -64,7 +64,7 @@ public class DAOArticle {
 	public ArrayList<Article> select() throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-db1", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
 		String sql = "SELECT * FROM article";
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
@@ -80,7 +80,7 @@ public class DAOArticle {
 	public void insert(Article a) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-db1", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
 		String sql = "INSERT INTO article VALUES(?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, a.getIdArticle());
@@ -97,7 +97,7 @@ public class DAOArticle {
 	public void update(Article a) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-db1", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
 		String sql = "UPDATE article SET libelle=?, description=?, prix=?, categorie=?, image=? WHERE id=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, a.getNomArticle());
@@ -114,7 +114,7 @@ public class DAOArticle {
 	public void delete(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-db1", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
 		String sql = "DELETE from article where id=" + id;
 		Statement st = conn.createStatement();
 		st.executeUpdate(sql);

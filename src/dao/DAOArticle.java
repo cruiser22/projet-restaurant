@@ -14,8 +14,8 @@ public class DAOArticle {
 	public ArrayList<Article> selectByPrix(double prix) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
-		String sql = "SELECT * FROM article WHERE prix=" + prix;
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
+		String sql = "SELECT * FROM articles WHERE prix=" + prix;
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
 		
@@ -31,8 +31,8 @@ public class DAOArticle {
 	public ArrayList<Article> selectByMarque(String nom) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
-		String sql = "SELECT * FROM article WHERE libelle LIKE(\"%" + nom + "%\");";
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
+		String sql = "SELECT * FROM articles WHERE libelle LIKE(\"%" + nom + "%\");";
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
 		
@@ -48,8 +48,8 @@ public class DAOArticle {
 	public Article selectByRef(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
-		String sql = "SELECT * FROM article WHERE id=" + id;
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
+		String sql = "SELECT * FROM articles WHERE id=" + id;
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
 		
@@ -64,8 +64,8 @@ public class DAOArticle {
 	public ArrayList<Article> select() throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
-		String sql = "SELECT * FROM article";
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
+		String sql = "SELECT * FROM articles";
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
 		
@@ -80,8 +80,8 @@ public class DAOArticle {
 	public void insert(Article a) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
-		String sql = "INSERT INTO article VALUES(?, ?, ?, ?, ?, ?)";
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
+		String sql = "INSERT INTO articles VALUES(?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, a.getIdArticle());
 		ps.setString(2, a.getNomArticle());
@@ -97,7 +97,7 @@ public class DAOArticle {
 	public void update(Article a) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
 		String sql = "UPDATE article SET libelle=?, description=?, prix=?, categorie=?, image=? WHERE id=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, a.getNomArticle());
@@ -114,11 +114,12 @@ public class DAOArticle {
 	public void delete(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hn-restaurant", "root", "root");
-		String sql = "DELETE from article where id=" + id;
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
+		String sql = "DELETE from articles where id=" + id;
 		Statement st = conn.createStatement();
 		st.executeUpdate(sql);
 		System.out.println("testDelete OK");
 		conn.close();
 	}
 }
+

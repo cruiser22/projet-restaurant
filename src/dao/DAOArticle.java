@@ -77,7 +77,7 @@ public class DAOArticle {
 		return ala;
 	}
 	
-	public void insert(Article a) throws ClassNotFoundException, SQLException {
+	public static void insert(Article a) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
@@ -93,6 +93,9 @@ public class DAOArticle {
 		System.out.println("testInsertion OK");
 		conn.close();
 	}
+	
+	
+	
 	
 	public void update(Article a) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub

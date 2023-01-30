@@ -48,7 +48,7 @@
 		<div class="order-1">
 			<a
 				class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl"
-				href="/"> EAT & LOVE. </a>
+				href="index.jsp"> EAT & LOVE. </a>
 		</div>
 	</div>
 	</nav>

@@ -1,48 +1,64 @@
 package model;
 
 public class Article {
-	private int id;
-    private String libelle;
-    private String description;
-    private Double prix;
+	private int idArticle;
+	private String nomArticle;
+	private String description;
+	private double prix;
+	private String categorie;
+	private String image;
+	
+	public Article(int idArticle, String nomArticle, String description, double prix) {
+		this.idArticle = idArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.prix = prix;
+	}
+	
+	public Article(int idArticle, String nomArticle, String description, double prix, String categorie) {
+		this.idArticle = idArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.prix = prix;
+		this.categorie = categorie;
+	}
+	
+	public Article(int idArticle, String nomArticle, String description, double prix, String categorie, String image) {
+		this.idArticle = idArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.prix = prix;
+		this.categorie = categorie;
+		this.image = image;
+	}
 
-    public Article(int id, String libelle, String description, Double prix) {
-        this.id = id;
-        this.libelle = libelle;
-        this.description = description;
-        this.prix = prix;
-    }
+	public int getIdArticle() {
+		return idArticle;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public String getNomArticle() {
+		return nomArticle;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public String getLibelle() {
-        return libelle;
-    }
+	public double getPrix() {
+		return prix;
+	}
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
+	public String getImage() {
+		return image;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getCategorie() {
+		return categorie;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(Double prix) {
-        this.prix = prix;
-    }
+	@Override
+	public String toString() {
+		return "Article [idArticle=" + idArticle + ", nomArticle=" + nomArticle + ", description=" + description
+				+ ", prix=" + prix + ", image=" + image + ", categorie=" + categorie + "]";
+	}
 }
-

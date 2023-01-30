@@ -39,7 +39,7 @@ public class DAOArticle {
 		ArrayList<Article> ala = new ArrayList<Article>();
 		while (rs.next())
 			ala.add(new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5), rs.getString(6)));
-		
+		ala.add(null);
 		System.out.println("testSelectByMarque OK");
 		conn.close();
 		return ala;
@@ -122,3 +122,4 @@ public class DAOArticle {
 		conn.close();
 	}
 }
+

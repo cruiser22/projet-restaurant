@@ -41,6 +41,11 @@
 				<li><a
 					class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
 					href="inscription.jsp">Inscription</a></li>
+				<c:if test="${client != null}">
+					<li><a
+						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+						href="session?auth=profil">Mon profil</a></li>
+				</c:if>
 			</ul>
 			</nav>
 		</div>
@@ -53,34 +58,42 @@
 	</div>
 	</nav>
 	<div class="w-full py-5 mt-8 flex items-center justify-center">
-		<h2 class="text-3xl font-semibold text-gray-800">Connexion</h2>
+		<h2 class="text-3xl font-semibold text-gray-800">Mon profil</h2>
 	</div>
 	<section class="bg-white pb-4 px-6 container mx-auto">
-	<form class="space-y-4 md:space-y-6" action="auth" method="post">
+	<form class="space-y-4 md:space-y-6" action="editUser" method="post">
 		<div>
 			<label for="identifiant"
 				class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre
-				identifiant</label> <input type="number" name="identifiant" id="identifiant"
+				identifiant</label> <input type="text" name="identifiant" id="identifiant"
 				class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-				placeholder="Identifiant" />
+				placeholder="Identifiant" value="${client.id}" readonly=”readonly”/>
 		</div>
 		<div>
-			<label for="pass"
-				class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot
-				de passe</label> <input type="password" name="password" id="password"
-				placeholder="••••••••"
+			<label for="nom"
+				class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre
+				nom</label> <input type="text" name="nom" id="nom"
 				class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-				required="" />
+				placeholder="Nom" value="${client.nom}" />
+		</div>
+		<div>
+			<label for="prenom"
+				class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre
+				prenom</label> <input type="text" name="prenom" id="prenom"
+				class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+				placeholder="Prenom" value="${client.prenom}" />
+		</div>
+		<div>
+			<label for="adresse"
+				class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre
+				adresse</label> <input type="text" name="adresse" id="adresse"
+				class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+				placeholder="Adresse" value="${client.adresse}" />
 		</div>
 		<button type="submit"
 			class="w-full text-white bg-gray-800 hover:bg-gray-600 font-medium rounded-lg text-sm px-5 py-3 text-center">
-			Connexion</button>
-		<p class="text-sm font-light text-gray-500 dark:text-gray-400">
-			Pas encore inscrit ? <a href="inscription.jsp"
-				class="font-medium text-primary-600 hover:underline">Cliquez
-				ici</a>
-		</p>
-		<input type="hidden" name="auth" value="connexion" />
+			Enregistrer</button>
+		<input type="hidden" name="auth" value="editUser" />
 	</form>
 	</section>
 </body>

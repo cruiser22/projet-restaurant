@@ -29,11 +29,18 @@ public class Session extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String context = request.getParameter("auth").toString();
+		System.out.println(context);
+
 		if (request.getSession().getAttribute("client") == null) {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		} else {
-			request.getRequestDispatcher("WEB-INF/monMenu.jsp").forward(request, response);
+			if (context.equals("profil"))
+				request.getRequestDispatcher("WEB-INF/profil.jsp").forward(request, response);
+			else if (context.equals("editUser"))
+				request.getRequestDispatcher("editUser").forward(request, response);
+			else
+				request.getRequestDispatcher("WEB-INF/monMenu.jsp").forward(request, response);
 		}
 	}
 

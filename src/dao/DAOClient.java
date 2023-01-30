@@ -50,6 +50,21 @@ public class DAOClient {
 		return client;
 	}
 
+	public Client edit(int id, Client client) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
+
+		String sql = "update clients set nom = ?, prenom = ?, adresse = ? where id = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+
+		ps.setString(1, client.getNom());
+		ps.setString(2, client.getPrenom());
+		ps.setString(3, client.getAdresse());
+		ps.setInt(4, id);
+		ps.executeUpdate();
+
+		return client;
+	}
 	// public ArrayList<Article> selectByMarque(String marque) throws
 	// ClassNotFoundException, SQLException {
 	// Class.forName("com.mysql.jdbc.Driver");

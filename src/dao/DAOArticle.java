@@ -28,7 +28,7 @@ public class DAOArticle {
 		return ala;
 	}
 	
-	public ArrayList<Article> selectByMarque(String nom) throws ClassNotFoundException, SQLException {
+	public ArrayList<Article> selectByLibelle(String nom) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
@@ -45,7 +45,7 @@ public class DAOArticle {
 		return ala;
 	}
 	
-	public Article selectByRef(int id) throws ClassNotFoundException, SQLException {
+	public Article selectById(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");

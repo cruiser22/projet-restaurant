@@ -47,9 +47,13 @@
 						<td><c:out value="${a.prix}" /></td>
 						<td><c:out value="${a.categorie}" /></td>
 						<td><img style="width: 100px; height: 100px; object-fit: contain;" src="image/${a.image}"></td>
+						<td><a href="ModifierArticleServlet?id=${a.idArticle}" class="btn btn-warning">Modifier</a>
+							<a href="SupprimerArticleServlet?id=${a.idArticle}" class="btn btn-danger">Supprimer</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
+			
 				<h2>Ajouter un nouvel article</h2>
 				<form action="AjouterArticleServlet" method="post"
 					enctype="multipart/form-data">

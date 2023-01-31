@@ -32,7 +32,7 @@
     			<tr>
                 	<td><c:out value="${c.a.nomArticle}"/></td>
                 	<td><c:out value="${c.quantite}"/></td>
-                	<td><c:out value="${c.prixTotal}"/></td>
+                	<td><c:out value="${c.prixLigne}"/></td>
            		</tr>
         	</c:forEach>
         </table>

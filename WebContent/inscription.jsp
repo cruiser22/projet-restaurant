@@ -94,7 +94,7 @@
 				placeholder="Prenom" />
 		</div>
 		<div>
-			<label for="pass"
+			<label for="password"
 				class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot
 				de passe</label> <input type="password" name="password" id="password"
 				placeholder="••••••••"

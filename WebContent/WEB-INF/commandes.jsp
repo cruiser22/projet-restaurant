@@ -9,7 +9,7 @@
 <body>
     <table>
        <tr>
-            <th>Articles</th>
+            <th>Article</th>
             <th>Quantité</th>
             <th>Prix Total</th>
        </tr>

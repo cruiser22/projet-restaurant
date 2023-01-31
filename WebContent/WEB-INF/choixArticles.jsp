@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Choix des articles</title>
 </head>
 <% System.out.println(request.getAttribute("listeArticles")); %>
 <body>
@@ -21,7 +21,7 @@
         <input type="submit" value="Ajouter au panier">
     </form>
     <br>
-    <form action="RecapCommande" method="post">
+    <form action="Recap" method="post">
         <table>
            	<tr>
                 <th>Articles</th>

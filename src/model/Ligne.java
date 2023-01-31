@@ -3,12 +3,12 @@ package model;
 public class Ligne {
 	private Article a;
 	private int quantite;
-	private double prixTotal;
+	private double prixLigne;
 
 	public Ligne(Article a, int quantite) {
 		this.a = a;
 		this.quantite = quantite;
-		this.prixTotal = a.getPrix() * quantite;
+		this.prixLigne = a.getPrix() * quantite;
 	}
 	
 	public Article getA() {
@@ -20,12 +20,12 @@ public class Ligne {
 	}
 	
 	
-	public double getPrixTotal() {
-		return prixTotal;
+	public double getPrixLigne() {
+		return prixLigne;
 	}
 
 	@Override
 	public String toString() {
-		return "Ligne [a=" + a + ", quantite=" + quantite + ", prixTotal=" + prixTotal + "]";
+		return "Ligne [a=" + a + ", quantite=" + quantite + ", prixTotal=" + prixLigne + "]";
 	}
 }

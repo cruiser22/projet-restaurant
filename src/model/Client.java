@@ -11,6 +11,38 @@ public class Client {
 		this.prenom = prenom;
 		this.adresse = adresse;
 	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public String getPass() {
+		return pass;
+	}
+
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+
 
 	public String toString() {
 		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + "]";

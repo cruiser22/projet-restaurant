@@ -36,8 +36,9 @@ public class ModifierArticleServlet extends HttpServlet {
 		    String nomArticle = request.getParameter("nomArticle");
 		    String descriptionArticle = request.getParameter("descriptionArticle");
 		    double prixArticle = Double.parseDouble(request.getParameter("prixArticle"));
+		    String imageArticle = request.getParameter("imageArticle");
 
-		    Article article = new Article(idArticle, nomArticle, descriptionArticle, prixArticle);
+		    Article article = new Article(idArticle, nomArticle, descriptionArticle, prixArticle, imageArticle);
 		    try {
 				DAOArticle.update(article);
 			} catch (ClassNotFoundException e) {
@@ -48,7 +49,7 @@ public class ModifierArticleServlet extends HttpServlet {
 				e.printStackTrace();
 			} 
 
-		    response.sendRedirect("carte.jsp");
+		    request.getRequestDispatcher("WEB-INF/gestionArticle.jsp").forward(request, response);
 		  }
 
 		

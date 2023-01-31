@@ -47,7 +47,7 @@
 						<td><c:out value="${a.prix}" /></td>
 						<td><c:out value="${a.categorie}" /></td>
 						<td><img style="width: 100px; height: 100px; object-fit: contain;" src="image/${a.image}"></td>
-						<td><a href="modifierArticle.jsp?id=${a.idArticle}" class="btn btn-warning">Modifier</a>
+						<td><a href="getArticleById?id=${a.idArticle}" class="btn btn-warning">Modifier</a>
 							<a href="SuppressionArticle?id=${a.idArticle}" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>

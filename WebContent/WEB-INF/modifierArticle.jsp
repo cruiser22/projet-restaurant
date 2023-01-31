@@ -8,6 +8,7 @@
 
 <title>Insert title here</title>
 </head>
+<%System.out.println(request.getAttribute("article")); %>
 <body>
 <h1>Modification d'article</h1>
 	<form action="ModifierArticleServlet" method="post" enctype="multipart/form-data">
@@ -29,7 +30,7 @@
 			<input type="file" class="form-control-file" id="imageArticle" name="imageArticle" accept="image/*">
 			<img style="width: 100px; height: 100px; object-fit: contain;" src="image/<c:out value="${article.image}" />">
 		</div>
-		<button type="submit" class="btn btn-primary">Enregistrer</button>
+		<button href="google.fr" type="submit" class="btn btn-primary">Enregistrer</button>
 	</form>
 </body>
 </body>

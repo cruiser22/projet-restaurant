@@ -32,7 +32,13 @@ public class Session extends HttpServlet {
 		String context = request.getParameter("auth").toString();
 		System.out.println(context);
 
-		if (request.getSession().getAttribute("client") == null) {
+		if (context.equals("administration")) {
+			if (request.getSession().getAttribute("admin") == null) {
+				request.getRequestDispatcher("admin.jsp").forward(request, response);
+			} else {
+				request.getRequestDispatcher("WEB-INF/gestionArticle.jsp").forward(request, response);
+			}
+		} else if (request.getSession().getAttribute("client") == null) {
 			request.getRequestDispatcher("connexion.jsp").forward(request, response);
 		} else {
 			if (context.equals("profil"))

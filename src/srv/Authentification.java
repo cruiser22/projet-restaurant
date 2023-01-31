@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DAOAdmin;
 import dao.DAOClient;
+import model.Admin;
 import model.Client;
 
 /**
@@ -34,15 +36,21 @@ public class Authentification extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String context = request.getParameter("auth").toString();
-		int identifiant = Integer.parseInt(request.getParameter("identifiant"));
+		String context = request.getParameter("auth");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String password = request.getParameter("password");
 		String adresse = request.getParameter("adresse");
+		int identifiant = -1;
+
+		if (request.getParameter("identifiant") != null)
+			identifiant = Integer.parseInt(request.getParameter("identifiant"));
+
+		String login = request.getParameter("login");
 
 		DAOClient dao = new DAOClient();
 		Client client = null;
+		Admin admin = null;
 
 		if (context.equals("connexion")) {
 			try {
@@ -65,7 +73,21 @@ public class Authentification extends HttpServlet {
 			}
 		}
 
+		if (context.equals("administration")) {
+			DAOAdmin daoAdmin = new DAOAdmin();
+			try {
+				admin = daoAdmin.login(login, password);
+				client = null;
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				request.getRequestDispatcher("admin.jsp").forward(request, response);
+			}
+		}
+
 		request.getSession().setAttribute("client", client);
+		request.getSession().setAttribute("admin", admin);
 		// request.setAttribute("erreur", false);
 		request.getRequestDispatcher("session").forward(request, response);
 	}

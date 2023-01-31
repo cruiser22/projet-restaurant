@@ -45,6 +45,23 @@ public class DAOArticle {
 		return ala;
 	}
 
+	public ArrayList<Article> selectByName(String name) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
+		String sql = "SELECT * FROM articles WHERE libelle like '%" + name + "%'";
+		Statement st = conn.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+
+		ArrayList<Article> articles = new ArrayList<Article>();
+		while (rs.next())
+			articles.add(new Article(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+					rs.getString(6)));
+		conn.close();
+		System.out.println(sql);
+		return articles;
+	}
+
 	public Article selectByRef(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
@@ -78,13 +95,8 @@ public class DAOArticle {
 		conn.close();
 		return ala;
 	}
-<<<<<<< HEAD
-	
-	public static void insert(Article a) throws ClassNotFoundException, SQLException {
-=======
 
 	public void insert(Article a) throws ClassNotFoundException, SQLException {
->>>>>>> ca659021c8f661d0f6dab8b333ce3f2cfb1fd5cc
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
@@ -100,14 +112,7 @@ public class DAOArticle {
 		System.out.println("testInsertion OK");
 		conn.close();
 	}
-<<<<<<< HEAD
-	
-	
-	
-	
-=======
 
->>>>>>> ca659021c8f661d0f6dab8b333ce3f2cfb1fd5cc
 	public void update(Article a) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");

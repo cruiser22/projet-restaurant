@@ -49,7 +49,7 @@
 				<c:if test="${client != null}">
 					<li><a
 						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-						href="choixArticles.jsp">Mon Menu</a></li>
+						href="Carte">Mon Menu</a></li>
 					<li><a
 						class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
 						href="session?auth=profil">Mon profil</a></li>

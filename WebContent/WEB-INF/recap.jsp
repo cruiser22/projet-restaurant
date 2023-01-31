@@ -27,7 +27,7 @@ System.out.println(request.getAttribute("liste")); %>
             for (Ligne c : choix)
             	reponse += "<tr><td>" + c.getA().getNomArticle()
             			+ "</td><td>" + c.getQuantite()
-            			+ "</td><td>" + c.getPrixTotal()
+            			+ "</td><td>" + c.getPrixLigne()
             			+ "</td></tr>";
             out.print(reponse);
 		%>
@@ -35,7 +35,7 @@ System.out.println(request.getAttribute("liste")); %>
     <form action="Carte" method="post">
         <input type="submit" value="<- Retour au panier">
     </form>
-    <form action="Carte" method="post">
+    <form action="Commander" method="post">
         <input type="submit" value="Valider la commande ->">
     </form>
 </body>

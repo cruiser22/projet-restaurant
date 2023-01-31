@@ -38,7 +38,7 @@ public class Authentification extends HttpServlet {
 		int identifiant = Integer.parseInt(request.getParameter("identifiant"));
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
-		String password = request.getParameter("password");
+		String password = request.getParameter("pass");
 		String adresse = request.getParameter("adresse");
 
 		DAOClient dao = new DAOClient();

@@ -46,6 +46,10 @@ public class Commander extends HttpServlet {
 		for (Ligne l : choix)
 			prixTotal += l.getPrixLigne();
 		
+		System.out.println(clt.getId());
+		System.out.println(new Date());
+		System.out.println(prixTotal);
+		System.out.println(choix);
 		Commande cmd = new Commande(clt.getId(), new Date(), prixTotal, choix);
 		
 		try {

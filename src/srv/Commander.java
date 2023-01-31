@@ -46,11 +46,10 @@ public class Commander extends HttpServlet {
 		for (Ligne l : choix)
 			prixTotal += l.getPrixLigne();
 		
-		Commande c = new Commande(clt.getId(), new Date(), prixTotal, choix);
+		Commande cmd = new Commande(clt.getId(), new Date(), prixTotal, choix);
 		
 		try {
-			dao.insert(c);
-			request.setAttribute("commande", c);
+			dao.insert(cmd);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,6 +57,8 @@ public class Commander extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("client", clt);
+		request.setAttribute("commande", cmd);
 		
 		request.getRequestDispatcher("WEB-INF/commandes.jsp").forward(request, response);
 	}

@@ -30,7 +30,7 @@
 			<input type="file" class="form-control-file" id="imageArticle" name="imageArticle" accept="image/*">
 			<img style="width: 100px; height: 100px; object-fit: contain;" src="image/<c:out value="${article.image}" />">
 		</div>
-		<button href="google.fr" type="submit" class="btn btn-primary">Enregistrer</button>
+		<button  type="submit" class="btn btn-primary">Enregistrer</button>
 	</form>
 </body>
 </body>

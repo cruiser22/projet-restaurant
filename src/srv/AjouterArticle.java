@@ -36,15 +36,27 @@ public class AjouterArticle extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int choix = Integer.parseInt(request.getParameter("choix"));
-		int quantite = Integer.parseInt(request.getParameter("quantite"));
+		String numerique = request.getParameter("quantite");
+		int quantite = 0;
+		if (numerique != "")
+			quantite = Integer.parseInt(numerique);
 		DAOArticle dao = new DAOArticle();
 		HttpSession panier = request.getSession();
+		boolean inChoix = false;
 		
+		for (Ligne l : listeChoix) {
+			if (l.getA().getIdArticle() == choix) {
+				l.setQuantite(l.getQuantite() + quantite);
+				inChoix = true;
+			}
+		}
+
 		try {
 			ArrayList<Article> listeArticles = dao.select();
 			request.setAttribute("listeArticles", listeArticles);
-			listeChoix.add(new Ligne(dao.selectById(choix), quantite));
-			request.setAttribute("listeChoix", listeChoix);
+			if (!inChoix)
+				listeChoix.add(new Ligne(dao.selectById(choix), quantite));
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,6 +64,7 @@ public class AjouterArticle extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("listeChoix", listeChoix);
 		panier.setAttribute("listeChoix", listeChoix);
 		request.getRequestDispatcher("WEB-INF/choixArticles.jsp").forward(request, response);
 	}

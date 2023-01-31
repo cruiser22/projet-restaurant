@@ -8,7 +8,7 @@ public class Ligne {
 	public Ligne(Article a, int quantite) {
 		this.a = a;
 		this.quantite = quantite;
-		this.prixLigne = a.getPrix() * quantite;
+		setPrixLigne();
 	}
 	
 	public Article getA() {
@@ -19,9 +19,17 @@ public class Ligne {
 		return quantite;
 	}
 	
-	
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+		setPrixLigne();
+	}
+
 	public double getPrixLigne() {
 		return prixLigne;
+	}
+
+	public void setPrixLigne() {
+		this.prixLigne = a.getPrix() * this.quantite;
 	}
 
 	@Override

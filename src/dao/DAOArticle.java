@@ -44,6 +44,7 @@ public class DAOArticle {
 		conn.close();
 		return ala;
 	}
+<<<<<<< HEAD
 
 	public ArrayList<Article> selectByName(String name) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
@@ -62,6 +63,9 @@ public class DAOArticle {
 		return articles;
 	}
 
+=======
+	
+>>>>>>> 73d9bb9281cf4116b2b22f32843da27b81adfeac
 	public Article selectById(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");

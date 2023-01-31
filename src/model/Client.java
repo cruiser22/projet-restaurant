@@ -12,10 +12,6 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public String toString() {
-		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + "]";
-	}
-
 	public int getId() {
 		return id;
 	}

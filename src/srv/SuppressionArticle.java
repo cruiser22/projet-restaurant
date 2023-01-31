@@ -10,19 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DAOArticle;
-import model.Article;
 
 /**
- * Servlet implementation class ModifierArticleServlet
+ * Servlet implementation class SuppressionArticle
  */
-@WebServlet("/ModifierArticleServlet")
-public class ModifierArticleServlet extends HttpServlet {
+@WebServlet("/SuppressionArticle")
+public class SuppressionArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModifierArticleServlet() {
+    public SuppressionArticle() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,26 +31,15 @@ public class ModifierArticleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		   int idArticle = Integer.parseInt(request.getParameter("idArticle"));
-		    String nomArticle = request.getParameter("nomArticle");
-		    String descriptionArticle = request.getParameter("descriptionArticle");
-		    double prixArticle = Double.parseDouble(request.getParameter("prixArticle"));
-
-		    Article article = new Article(idArticle, nomArticle, descriptionArticle, prixArticle);
+		 int idArticle = Integer.parseInt(request.getParameter("idArticle"));
 		    try {
-				DAOArticle.update(article);
-			} catch (ClassNotFoundException e) {
+				DAOArticle.delete(idArticle);
+			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-
-		    response.sendRedirect("carte.jsp");
+			}
+		    response.sendRedirect("gestionArticles.jsp");
 		  }
-
-		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -130,7 +130,7 @@ public class DAOArticle {
 		conn.close();
 	}
 
-	public void delete(int id) throws ClassNotFoundException, SQLException {
+	public static void delete(int id) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant-hn", "root", "root");
